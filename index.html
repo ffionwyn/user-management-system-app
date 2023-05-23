@@ -19,22 +19,31 @@
                 <h1 class="text-center flex-grow-1 text-dark">User Management App</h1>
                 <div class="search-bar">
                     <input type="text" class="form-control" placeholder="Search for User">
-                    <button type="button" class="btn btn-primary">Search</button>
+                    <button type="button" class="btn btn-outline-dark btn-sm">Search</button>
                 </div>
             </div>
         </div>
 
         <div class="content">
-            <div class="sidebar bg-light">
-                <div class="sidebar-content">
-                    <button type="button" class="btn btn-primary btn-block">See All Users</button>
-                    <button type="button" class="btn btn-primary btn-block">Create New Users</button>
-                    <button type="button" class="btn btn-primary btn-block">Update User</button>
-                    <button type="button" class="btn btn-primary btn-block">Delete User</button>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="sidebar bg-light">
+                        <div class="d-flex flex-column">
+                            <button type="button" class="btn btn-outline-dark btn-sm mb-2">See All Users</button>
+                            <button type="button" class="btn btn-outline-dark btn-sm mb-2">Create New Users</button>
+                            <button type="button" class="btn btn-outline-dark btn-sm mb-2">Update User</button>
+                            <button type="button" class="btn btn-outline-dark btn-sm mb-2">Delete User</button>
+                        </div>
+                        <div class="search-bar">
+                            <input type="text" class="form-control" placeholder="Search for User">
+                            <button type="button" class="btn btn-outline-dark btn-sm mt-2">Search</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="main-content">
+                <div class="col-md-9">
+                    <div class="main-content">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
