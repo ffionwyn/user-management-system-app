@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="styles.css" rel="stylesheet">
+    <script src = "my-scripts.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -25,7 +26,7 @@
                 <div class="col-md-3">
                     <div class="sidebar bg-light">
                         <div class="d-flex flex-column">
-                            <button type="button" class="btn btn-outline-dark btn-sm mb-2">See All Users</button>
+                            <button type="button" class="btn btn-outline-dark btn-sm mb-2" onclick="seeAllUsers()">See All Users</button>
                             <button type="button" class="btn btn-outline-dark btn-sm mb-2">Create New Users</button>
                             <button type="button" class="btn btn-outline-dark btn-sm mb-2">Update User</button>
                             <button type="button" class="btn btn-outline-dark btn-sm mb-2">Delete User</button>
@@ -38,7 +39,7 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <div class="main-content">
+                    <div class="main-content" id="main-content">
                     </div>
                 </div>
             </div>
