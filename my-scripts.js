@@ -36,9 +36,11 @@ async function seeAllUsers() {
 document.addEventListener("DOMContentLoaded", function() {
   const searchInput = document.getElementById("search-input");
   const searchButton = document.getElementById("search-button");
+  const createUserButton = document.getElementById("modal-create-user-button");
 
   searchButton.addEventListener("click", handleSearch);
-
+  createUserButton.addEventListener("click", handleCreateUser);
+    
 function handleSearch() {
   const query = searchInput.value.toLowerCase();
 
@@ -87,11 +89,34 @@ function handleSearch() {
   }
 });
 
+function handleCreateUser() {
+     console.log("Event listener registered for searchButton");
+searchButton.addEventListener("click", handleSearch);
+  const firstNameInput = document.getElementById("recipient-name");
+  const messageInput = document.getElementById("message-text");
 
+  const userData = {
+    FirstName: firstNameInput.value,
+    Message: messageInput.value
+  };
 
+  createNewUser(userData);
+}
 
-
-
-
-
-
+function createNewUser(data) {
+  fetch("http://localhost:5000/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then(response => response.json())
+    .then(result => {
+      console.log("New user created:", result);
+    })
+    .catch(error => {
+      console.error("Error creating user:", error);
+    });
+}
+  
