@@ -5,7 +5,10 @@ async function seeAllUsers() {
             console.log(data);
             let peopleIDS = Object.keys(data);
             let content = document.getElementById("main-content");
-            peopleIDS.map(id => {
+            
+            content.innerHTML = "";
+            
+                peopleIDS.map(id => {
                 let person = document.createElement("div");
                 person.classList.add("mb-3");
 
