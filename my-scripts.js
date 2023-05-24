@@ -35,11 +35,13 @@ async function seeAllUsers() {
 
 document.addEventListener("DOMContentLoaded", function() {
   const searchInput = document.getElementById("search-input");
-  const searchButton = document.getElementById("search-button");
-  const createUserButton = document.getElementById("modal-create-user-button");
-
-  searchButton.addEventListener("click", handleSearch);
+    const searchButton = document.getElementById("search-button");
+     searchButton.addEventListener("click", handleSearch);
   createUserButton.addEventListener("click", handleCreateUser);
+    const createUserButton = document.getElementById("modal-create-user-button");
+    const updateButton = document.getElementById("update-button");
+  updateButton.addEventListener("click", handleUpdateUser);
+
     
 function handleSearch() {
   const query = searchInput.value.toLowerCase();
@@ -120,3 +122,33 @@ function createNewUser(data) {
     });
 }
   
+// function handleUpdateUser() {
+//   const firstNameInput = document.getElementById("user-name");
+//   const secondNameInput = document.getElementById("second-name-input"); 
+
+//   const userData = {
+//     FirstName: firstNameInput.value,
+//     SecondName: secondNameInput.value,
+//   };
+
+//   const userId = ??
+
+//   updateUserData(userId, userData);
+// }
+
+// function updateUserData(userId, data) {
+//   fetch(`http://localhost:5000/users/${userId}`, {
+//     method: "PUT",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(data),
+//   })
+//     .then(response => response.json())
+//     .then(result => {
+//       console.log("User updated:", result);
+//     })
+//     .catch(error => {
+//       console.error("Error updating user:", error);
+//     });
+// }
