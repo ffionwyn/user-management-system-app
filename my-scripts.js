@@ -23,7 +23,7 @@ async function seeAllUsers() {
                 let dob = document.createElement("h5");
                 dob.classList.add("fs-6");
                 dob.innerHTML = "DOB: " + data[id].DOB;
-
+                    
                 person.appendChild(firstName);
                 person.appendChild(secondName);
                 person.appendChild(dob);
@@ -32,7 +32,6 @@ async function seeAllUsers() {
             });
         });
 }
-
 
 document.addEventListener("DOMContentLoaded", function() {
   const searchInput = document.getElementById("search-input");
@@ -87,3 +86,12 @@ function handleSearch() {
     });
   }
 });
+
+
+
+
+
+
+
+
+
