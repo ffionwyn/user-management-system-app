@@ -92,19 +92,19 @@ function handleSearch() {
   }
 });
 
-function handleCreateUser() {
-     console.log("Event listener registered for searchButton");
-searchButton.addEventListener("click", handleSearch);
-  const firstNameInput = document.getElementById("recipient-name");
-  const messageInput = document.getElementById("message-text");
+ function handleCreateUser() {
+  const firstNameInput = document.getElementById("new-first-name");
+  const secondNameInput = document.getElementById("new-second-name");
+  const dobInput = document.getElementById("new-dob");
 
-  const userData = {
+   const userData = {
     FirstName: firstNameInput.value,
-    Message: messageInput.value
+    SecondName: secondNameInput.value,
+    DOB: dobInput.value
   };
 
-  createNewUser(userData);
-}
+    createNewUser(userData);
+  }
 
 function createNewUser(data) {
   fetch("http://localhost:5000/users", {
@@ -123,33 +123,36 @@ function createNewUser(data) {
     });
 }
   
-// function handleUpdateUser() {
-//   const firstNameInput = document.getElementById("user-name");
-//   const secondNameInput = document.getElementById("second-name-input"); 
+function handleUpdateUser() {
+  const firstNameInput = document.getElementById("user-name");
+  const secondNameInput = document.getElementById("second-name-input"); 
+  const dobInput = document.getElementById("dob-input");
 
-//   const userData = {
-//     FirstName: firstNameInput.value,
-//     SecondName: secondNameInput.value,
-//   };
+  const userData = {
+    FirstName: firstNameInput.value,
+    SecondName: secondNameInput.value,
+    DOB: dobInput.value,
 
-//   const userId = ??
+  };
 
-//   updateUserData(userId, userData);
-// }
+  const userId = firstNameInput
 
-// function updateUserData(userId, data) {
-//   fetch(`http://localhost:5000/users/${userId}`, {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(data),
-//   })
-//     .then(response => response.json())
-//     .then(result => {
-//       console.log("User updated:", result);
-//     })
-//     .catch(error => {
-//       console.error("Error updating user:", error);
-//     });
-// }
+  updateUserData(userId, userData);
+}
+
+function updateUserData(userId, data) {
+  fetch(`http://localhost:5000/users/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then(response => response.json())
+    .then(result => {
+      console.log("User updated:", result);
+    })
+    .catch(error => {
+      console.error("Error updating user:", error);
+    });
+}
