@@ -35,11 +35,12 @@ async function seeAllUsers() {
 
 document.addEventListener("DOMContentLoaded", function() {
   const searchInput = document.getElementById("search-input");
-    const searchButton = document.getElementById("search-button");
-     searchButton.addEventListener("click", handleSearch);
+  const searchButton = document.getElementById("search-button");
+  const createUserButton = document.getElementById("modal-create-user-button");
+  const updateButton = document.getElementById("update-button");
+
+  searchButton.addEventListener("click", handleSearch);
   createUserButton.addEventListener("click", handleCreateUser);
-    const createUserButton = document.getElementById("modal-create-user-button");
-    const updateButton = document.getElementById("update-button");
   updateButton.addEventListener("click", handleUpdateUser);
 
     

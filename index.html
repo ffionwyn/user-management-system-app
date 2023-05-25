@@ -7,8 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -26,16 +24,16 @@
       <div class="row">
         <div class="col-md-3">
           <div class="sidebar bg-light">
-            <div class="d-flex flex-column">
+        <div class="d-flex flex-column">
               <button type="button" class="btn btn-outline-dark btn-sm mb-2" onclick="seeAllUsers()">See All Users</button>
               <button type="button" data-toggle="modal" data-target="#newUser" class="btn btn-outline-dark btn-sm mb-2">Create New User</button>
               <button type="button" data-toggle="modal" data-target="#updateUser" class="btn btn-outline-dark btn-sm mb-2">Update User</button>
               <button type="button" class="btn btn-outline-dark btn-sm mb-2">Delete User</button>
             </div>
-          <div class="mb-3">
-          <label for="formFileMultiple" class=" form-label">Upload file for User</label>
-          <input class="form-control" type="file" id="formFileMultiple" multiple>
-          </div>
+            <div class="mb-3">
+              <label for="formFileMultiple" class=" form-label">Upload file for User</label>
+              <input class="form-control" type="file" id="formFileMultiple" multiple>
+            </div>
             <div class="search-bar">
               <input type="text" id="search-input" class="form-control" placeholder="Search for User">
               <button type="button" id="search-button" class="btn btn-outline-dark btn-sm mt-2">Search</button>
@@ -50,65 +48,64 @@
     </div>
   </div>
 
-  <button onclick="document.getElementById('id01').style.display='block' "type= button class="btn btn-outline-dark btn-sm mb-2">Delete User</button>
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="/action_page.php">
-    <div class="container">
-      <p>Are you sure you want to delete user from application?</p>
-      <div class="clearfix">
-        <button type="button" class="deletebtn">Delete</button>
+  <div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <form class="modal-content" action="/action_page.php">
+      <div class="container">
+        <p>Are you sure you want to delete user from the application?</p>
+        <div class="clearfix">
+          <button type="button" class="deletebtn">Delete</button>
+        </div>
       </div>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
 
 <div class="container">
-  <div class="modal fade" id="newUser" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Please enter user details:</h4>
-        </div>
-        <div class="modal-body">
-          <p>FirstName: SecondName: DOB: </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+    <div class="modal fade" id="newUser" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Please enter user details:</h4>
+          </div>
+          <div class="modal-body">
+            <input type="text" id="recipient-name" class="form-control" placeholder="First Name">
+            <input type="text" id="message-text" class="form-control" placeholder="Second Name">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="modal-create-user-button" class="btn btn-primary">Create User</button>
+          </div>
       </div>
     </div>
   </div>
 </div>
-</body>
-</html>
 
-<div class="container">
-  <div class="modal fade" id="updateUser" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Please enter new user details:</h4>
-        </div>
-        <div class="modal-body">
-          <p>FirstName: SecondName: DOB: </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+
+  <div class="container">
+    <div class="modal fade" id="updateUser" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Please enter new user details:</h4>
+          </div>
+          <div class="modal-body">
+            <input type="text" id="user-name" class="form-control" placeholder="First Name">
+            <input type="text" id="second-name-input" class="form-control" placeholder="Second Name">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="update-button" class="btn btn-primary">Update User</button>
+          </div>
       </div>
     </div>
   </div>
 </div>
-</body>
-</html>
 
-
-  <script src="my-scripts.js"></script>
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="my-scripts.js"></script>
 </body>
 
 </html>
