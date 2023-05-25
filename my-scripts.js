@@ -156,3 +156,18 @@ function updateUserData(userId, data) {
       console.error("Error updating user:", error);
     });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  const deleteUserButton = document.getElementById("delete-user-button");
+  const confirmDeleteButton = document.getElementById("confirm-delete-button");
+
+  deleteUserButton.addEventListener("click", handleDeleteButtonClick);
+  confirmDeleteButton.addEventListener("click", handleConfirmDeleteButtonClick);
+});
+
+function handleDeleteButtonClick() {
+}
+
+function handleConfirmDeleteButtonClick() {
+  $('#deleteUserModal').modal('hide');
+}
