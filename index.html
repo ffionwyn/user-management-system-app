@@ -47,32 +47,19 @@
     </div>
   </div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-          <button type="button" class="btn btn-outline-dark btn-sm mb-2" data-dismiss="modal">Close</button>
-          <span aria-hidden="true">&times;</span>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Recipient:</label>
-              <input type="text" class="form-control" id="recipient-name">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">Message:</label>
-              <textarea class="form-control" id="message-text"></textarea>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="modal-create-user-button" data-dismiss="modal">Create User</button>
-        </div>
+  <button onclick="document.getElementById('id01').style.display='block' "type= button class="btn btn-outline-dark btn-sm mb-2">Delete User</button>
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" action="/action_page.php">
+    <div class="container">
+      <p>Are you sure you want to delete user from application?</p>
+      <div class="clearfix">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <button type="button" class="deletebtn">Delete</button>
       </div>
     </div>
-  </div>
+  </form>
+</div>
 
   <script src="my-scripts.js"></script>
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
