@@ -82,7 +82,11 @@ document.addEventListener("DOMContentLoaded", function() {
 function handleSearch() {
   const query = searchInput.value.toLowerCase();
 
-  fetch('http://localhost:5000/users')
+  fetch('http://localhost:5000/users', {
+    headers: {
+      'Authorization': `Basic ${btoa('testuser:testpass')}`
+    }
+  })
     .then(response => response.json())
     .then(data => {
       const filteredUsers = Object.values(data).filter(person =>
