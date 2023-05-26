@@ -42,6 +42,14 @@ async function seeAllUsers() {
                   updateUserButton.setAttribute("data-bs-user-id", id)
                   updateUserButton.innerHTML = "Update User"
 
+                  let updateUserFileButton = document.createElement("button");
+                  updateUserFileButton.setAttribute("id", "update-file-user-button") 
+                  updateUserFileButton.setAttribute("data-bs-toggle", "modal") 
+                  updateUserFileButton.setAttribute ("data-bs-target", "#updateUserFile")
+                  updateUserFileButton.setAttribute("class", "btn btn-outline-dark btn-sm mb-2") 
+                  updateUserFileButton.setAttribute("data-bs-user-id", id)
+                  updateUserFileButton.innerHTML = "Update User Contract"
+
                     
                 person.appendChild(firstName);
                 person.appendChild(secondName);
@@ -49,6 +57,7 @@ async function seeAllUsers() {
                 
                   content.appendChild(deleteUserButton)
                   content.appendChild(updateUserButton)
+                  content.appendChild(updateUserFileButton)
                 content.appendChild(person);
             });
         });
@@ -202,3 +211,28 @@ updateUserModal.addEventListener('show.bs.modal', function (event) {
   console.log(button)
   selectedUser = button.getAttribute('data-bs-user-id');
 });
+
+function handleUploadFileClick() {
+  const fileInput = document.getElementById("customFile");
+  const file = fileInput.files[0];
+
+  if (!file) {
+    console.error("No file selected.");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  fetch(`http://localhost:5000/users/${selectedUser}`, {
+    method: "POST",
+    body: formData,
+  })
+    .then(response => response.json())
+    .then(result => {
+      console.log("File uploaded:", result);
+    })
+    .catch(error => {
+      console.error("Error uploading file:", error);
+    });
+}
