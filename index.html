@@ -26,7 +26,6 @@
         <div class="d-flex flex-column">
               <button type="button" class="btn btn-outline-dark btn-sm mb-2" onclick="seeAllUsers()">See All Users</button>
               <button type="button" data-bs-toggle="modal" data-bs-target="#newUser" class="btn btn-outline-dark btn-sm mb-2">Create New User</button>
-              <button type="button" data-bs-toggle="modal" data-bs-target="#updateUser" class="btn btn-outline-dark btn-sm mb-2">Update User</button>
             </div>
             <div class="mb-3">
               <label for="formFileMultiple" class=" form-label">Upload file for User</label>
@@ -60,8 +59,8 @@
             <input type="text" id="new-dob" class="form-control" placeholder="Date of Birth (DD-MM-YYYY)">
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" id="modal-create-user-button" class="btn btn-primary" data-dismiss="modal" onclick="handleCreateUser()">Create User</button>
+            <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+            <button type="button" id="modal-create-user-button" class="btn btn-primary" data-bs-dismiss="modal" onclick="handleCreateUser()">Create User</button>
           </div>
       </div>
     </div>
@@ -77,13 +76,13 @@
             <h4 class="modal-title">Please enter new user details:</h4>
           </div>
           <div class="modal-body">
-            <input type="text" id="user-name" class="form-control" placeholder="First Name">
+            <input type="text" id="user-name-input" class="form-control" placeholder="First Name">
             <input type="text" id="second-name-input" class="form-control" placeholder="Second Name">
             <input type="text" id="dob-input" class="form-control" placeholder="Date of Birth (DD-MM-YYYY)">
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" id="update-button" class="btn btn-primary">Update User</button>
+            <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+            <button type="button" id="update-button" data-bs-dismiss="modal" class="btn btn-primary" onclick = "handleUpdateUser()">Update User</button>
           </div>
       </div>
     </div>

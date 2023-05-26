@@ -33,12 +33,22 @@ async function seeAllUsers() {
                   deleteUserButton.setAttribute("class", "btn btn-outline-dark btn-sm mb-2") 
                   deleteUserButton.setAttribute("data-bs-user-id", id)
                   deleteUserButton.innerHTML = "Delete User"
+
+                  let updateUserButton = document.createElement("button");
+                  updateUserButton.setAttribute("id", "update-user-button") 
+                  updateUserButton.setAttribute("data-bs-toggle", "modal") 
+                  updateUserButton.setAttribute ("data-bs-target", "#updateUser")
+                  updateUserButton.setAttribute("class", "btn btn-outline-dark btn-sm mb-2") 
+                  updateUserButton.setAttribute("data-bs-user-id", id)
+                  updateUserButton.innerHTML = "Update User"
+
                     
                 person.appendChild(firstName);
                 person.appendChild(secondName);
                 person.appendChild(dob);
                 
-                content.appendChild(deleteUserButton)
+                  content.appendChild(deleteUserButton)
+                  content.appendChild(updateUserButton)
                 content.appendChild(person);
             });
         });
@@ -135,7 +145,7 @@ function createNewUser(data) {
 }
   
 function handleUpdateUser() {
-  const firstNameInput = document.getElementById("user-name");
+  const firstNameInput = document.getElementById("user-name-input");
   const secondNameInput = document.getElementById("second-name-input"); 
   const dobInput = document.getElementById("dob-input");
 
@@ -146,12 +156,13 @@ function handleUpdateUser() {
 
   };
   const userId = firstNameInput
-  updateUserData(userId, userData);
+  handleUpdateButtonClick(userData);
 }
 
-function updateUserData(userId, data) {
-  fetch(`http://localhost:5000/users/${userId}`, {
-    method: "PUT",
+function handleUpdateButtonClick(data) {
+  console.log(selectedUser)
+  fetch(`http://localhost:5000/users/${selectedUser}`, {
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
@@ -181,9 +192,13 @@ function handleDeleteButtonClick() {
 
 var deleteUserModal = document.getElementById('deleteUserModal');
 deleteUserModal.addEventListener('show.bs.modal', function (event) {
-  console.log("ffion is here");
   var button = event.relatedTarget;
   selectedUser = button.getAttribute('data-bs-user-id');
-  console.log(selectedUser);
-  console.log(button);
+});
+
+var updateUserModal = document.getElementById('updateUser');
+updateUserModal.addEventListener('show.bs.modal', function (event) {
+  var button = event.relatedTarget;
+  console.log(button)
+  selectedUser = button.getAttribute('data-bs-user-id');
 });
