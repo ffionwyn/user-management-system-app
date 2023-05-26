@@ -1,7 +1,11 @@
 let selectedUser 
 
 async function seeAllUsers() {
-    fetch('http://localhost:5000/users')
+  fetch('http://localhost:5000/users', {
+    headers: {
+      'Authorization': `Basic ${btoa('testuser:testpass')}`
+    }
+  })
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -62,6 +66,7 @@ async function seeAllUsers() {
             });
         });
 }
+
 
 document.addEventListener("DOMContentLoaded", function() {
   const searchInput = document.getElementById("search-input");
@@ -141,6 +146,7 @@ function createNewUser(data) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Basic ${btoa('testuser:testpass')}`
     },
     body: JSON.stringify(data),
   })
@@ -174,6 +180,7 @@ function handleUpdateButtonClick(data) {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Basic ${btoa('testuser:testpass')}`
     },
     body: JSON.stringify(data),
   })
@@ -189,6 +196,9 @@ function handleUpdateButtonClick(data) {
 function handleDeleteButtonClick() {
   fetch(`http://localhost:5000/users/${selectedUser}`, {
     method: "DELETE",
+      headers: {
+      'Authorization': `Basic ${btoa('testuser:testpass')}`
+    }
   })
     .then(response => response.json())
     .then(result => {
@@ -229,6 +239,9 @@ function handleUploadFileClick() {
 
   fetch(`http://localhost:5000/users/contracts/${selectedUser}`, {
     method: "POST",
+    headers: {
+      'Authorization': `Basic ${btoa('testuser:testpass')}`
+    },
     body: formData,
   })
     .then(result => {
