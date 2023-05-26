@@ -77,12 +77,12 @@ document.addEventListener("DOMContentLoaded", function() {
   searchButton.addEventListener("click", handleSearch);
   createUserButton.addEventListener("click", handleCreateUser);
   updateButton.addEventListener("click", handleUpdateUser);
+  createUserButton.addEventListener("click", handleCreateUser);
 
     
 function handleSearch() {
   const query = searchInput.value.toLowerCase();
-
-  fetch('http://localhost:5000/users', {
+  fetch('http://localhost:5000/users/', {
     headers: {
       'Authorization': `Basic ${btoa('testuser:testpass')}`
     }
@@ -162,6 +162,7 @@ function createNewUser(data) {
       console.error("Error creating user:", error);
     });
 }
+
   
 function handleUpdateUser() {
   const firstNameInput = document.getElementById("user-name-input");
