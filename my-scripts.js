@@ -22,12 +22,20 @@ async function seeAllUsers() {
 
                 let dob = document.createElement("h5");
                 dob.classList.add("fs-6");
-                dob.innerHTML = "DOB: " + data[id].DOB;
+                  dob.innerHTML = "DOB: " + data[id].DOB;
+                  
+                  let deleteUserButton = document.createElement("button");
+                  deleteUserButton.setAttribute("id", "delete-user-button") 
+                  deleteUserButton.setAttribute("data-toggle", "modal") 
+                  deleteUserButton.setAttribute ("data-target", "#deleteUserModal")
+                  deleteUserButton.setAttribute ("class", "btn btn-outline-dark btn-sm mb-2") 
+                  deleteUserButton.innerHTML = "Delete User"
                     
                 person.appendChild(firstName);
                 person.appendChild(secondName);
                 person.appendChild(dob);
-
+                
+                content.appendChild(deleteUserButton)
                 content.appendChild(person);
             });
         });
@@ -158,14 +166,23 @@ function updateUserData(userId, data) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  const deleteUserButton = document.getElementById("delete-user-button");
-  const confirmDeleteButton = document.getElementById("confirm-delete-button");
-
   deleteUserButton.addEventListener("click", handleDeleteButtonClick);
   confirmDeleteButton.addEventListener("click", handleConfirmDeleteButtonClick);
 });
 
 function handleDeleteButtonClick() {
+   const userId = document.getElementById("delete-user-button");
+
+  fetch(`http://localhost:5000/users/${userId}`, {
+    method: "DELETE",
+  })
+    .then(response => response.json())
+    .then(result => {
+      console.log("User deleted:", result);
+    })
+    .catch(error => {
+      console.error("Error deleting user:", error);
+    });
 }
 
 function handleConfirmDeleteButtonClick() {
