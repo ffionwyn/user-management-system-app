@@ -42,13 +42,13 @@ async function seeAllUsers() {
                   updateUserButton.setAttribute("data-bs-user-id", id)
                   updateUserButton.innerHTML = "Update User"
 
-                  let updateUserFileButton = document.createElement("button");
-                  updateUserFileButton.setAttribute("id", "update-file-user-button") 
-                  updateUserFileButton.setAttribute("data-bs-toggle", "modal") 
-                  updateUserFileButton.setAttribute ("data-bs-target", "#updateUserFile")
-                  updateUserFileButton.setAttribute("class", "btn btn-outline-dark btn-sm mb-2") 
-                  updateUserFileButton.setAttribute("data-bs-user-id", id)
-                  updateUserFileButton.innerHTML = "Update User Contract"
+                  let uploadUserFileButton = document.createElement("button");
+                  uploadUserFileButton.setAttribute("id", "upload-file-user-button") 
+                  uploadUserFileButton.setAttribute("data-bs-toggle", "modal") 
+                  uploadUserFileButton.setAttribute ("data-bs-target", "#uploadUserFile")
+                  uploadUserFileButton.setAttribute("class", "btn btn-outline-dark btn-sm mb-2") 
+                  uploadUserFileButton.setAttribute("data-bs-user-id", id)
+                  uploadUserFileButton.innerHTML = "Upload User Contract"
 
                     
                 person.appendChild(firstName);
@@ -57,7 +57,7 @@ async function seeAllUsers() {
                 
                   content.appendChild(deleteUserButton)
                   content.appendChild(updateUserButton)
-                  content.appendChild(updateUserFileButton)
+                  content.appendChild(uploadUserFileButton)
                 content.appendChild(person);
             });
         });
@@ -214,7 +214,9 @@ updateUserModal.addEventListener('show.bs.modal', function (event) {
 
 function handleUploadFileClick() {
   const fileInput = document.getElementById("customFile");
+  console.log("file input", fileInput)
   const file = fileInput.files[0];
+  console.log("file", file)
 
   if (!file) {
     console.error("No file selected.");
@@ -223,12 +225,12 @@ function handleUploadFileClick() {
 
   const formData = new FormData();
   formData.append("file", file);
+  console.log("form data", formData)
 
-  fetch(`http://localhost:5000/users/${selectedUser}`, {
+  fetch(`http://localhost:5000/users/contracts/${selectedUser}`, {
     method: "POST",
     body: formData,
   })
-    .then(response => response.json())
     .then(result => {
       console.log("File uploaded:", result);
     })
@@ -236,3 +238,10 @@ function handleUploadFileClick() {
       console.error("Error uploading file:", error);
     });
 }
+
+var uploadUserFileModal = document.getElementById('uploadUserFile');
+uploadUserFileModal.addEventListener('show.bs.modal', function (event) {
+  var button = event.relatedTarget;
+  selectedUser = button.getAttribute('data-bs-user-id');
+});
+
