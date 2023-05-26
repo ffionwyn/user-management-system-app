@@ -1,3 +1,5 @@
+let selectedUser 
+
 async function seeAllUsers() {
     fetch('http://localhost:5000/users')
         .then(response => response.json())
@@ -28,7 +30,8 @@ async function seeAllUsers() {
                   deleteUserButton.setAttribute("id", "delete-user-button") 
                   deleteUserButton.setAttribute("data-toggle", "modal") 
                   deleteUserButton.setAttribute ("data-target", "#deleteUserModal")
-                  deleteUserButton.setAttribute ("class", "btn btn-outline-dark btn-sm mb-2") 
+                  deleteUserButton.setAttribute("class", "btn btn-outline-dark btn-sm mb-2") 
+                  deleteUserButton.setAttribute("data-user-id", id)
                   deleteUserButton.innerHTML = "Delete User"
                     
                 person.appendChild(firstName);
@@ -142,9 +145,7 @@ function handleUpdateUser() {
     DOB: dobInput.value,
 
   };
-
   const userId = firstNameInput
-
   updateUserData(userId, userData);
 }
 
@@ -165,15 +166,8 @@ function updateUserData(userId, data) {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  deleteUserButton.addEventListener("click", handleDeleteButtonClick);
-  confirmDeleteButton.addEventListener("click", handleConfirmDeleteButtonClick);
-});
-
 function handleDeleteButtonClick() {
-   const userId = document.getElementById("delete-user-button");
-
-  fetch(`http://localhost:5000/users/${userId}`, {
+  fetch(`http://localhost:5000/users/${selectedUser}`, {
     method: "DELETE",
   })
     .then(response => response.json())
@@ -185,6 +179,11 @@ function handleDeleteButtonClick() {
     });
 }
 
-function handleConfirmDeleteButtonClick() {
-  $('#deleteUserModal').modal('hide');
-}
+var deleteUserModal = document.getElementById('deleteUserModal')
+deleteUserModal.addEventListener('show.bs.modal', function (event) {
+    console.log("ffion is here")
+  var button = event.relatedTarget
+    selectedUser = button.getAttribute('data-user-id')
+    console.log(selectedUser)
+     console.log(button)
+  })
