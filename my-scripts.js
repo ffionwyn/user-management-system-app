@@ -245,3 +245,4 @@ uploadUserFileModal.addEventListener('show.bs.modal', function (event) {
   selectedUser = button.getAttribute('data-bs-user-id');
 });
 
+
