@@ -57,13 +57,13 @@
             <h4 class="modal-title">Please enter user details:</h4>
           </div>
           <div class="modal-body">
-            <input type="text" id="recipient-name" class="form-control" placeholder="First Name">
-            <input type="text" id="message-text" class="form-control" placeholder="Second Name">
+            <input type="text" id="new-first-name" class="form-control" placeholder="First Name">
+            <input type="text" id="new-second-name" class="form-control" placeholder="Second Name">
             <input type="text" id="new-dob" class="form-control" placeholder="Date of Birth (DD-MM-YYYY)">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" id="modal-create-user-button" class="btn btn-primary">Create User</button>
+            <button type="button" id="modal-create-user-button" class="btn btn-primary" data-dismiss="modal" onclick="handleCreateUser()">Create User</button>
           </div>
       </div>
     </div>
