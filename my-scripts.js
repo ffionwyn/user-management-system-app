@@ -28,10 +28,10 @@ async function seeAllUsers() {
                   
                   let deleteUserButton = document.createElement("button");
                   deleteUserButton.setAttribute("id", "delete-user-button") 
-                  deleteUserButton.setAttribute("data-toggle", "modal") 
-                  deleteUserButton.setAttribute ("data-target", "#deleteUserModal")
+                  deleteUserButton.setAttribute("data-bs-toggle", "modal") 
+                  deleteUserButton.setAttribute ("data-bs-target", "#deleteUserModal")
                   deleteUserButton.setAttribute("class", "btn btn-outline-dark btn-sm mb-2") 
-                  deleteUserButton.setAttribute("data-user-id", id)
+                  deleteUserButton.setAttribute("data-bs-user-id", id)
                   deleteUserButton.innerHTML = "Delete User"
                     
                 person.appendChild(firstName);
@@ -179,11 +179,11 @@ function handleDeleteButtonClick() {
     });
 }
 
-var deleteUserModal = document.getElementById('deleteUserModal')
+var deleteUserModal = document.getElementById('deleteUserModal');
 deleteUserModal.addEventListener('show.bs.modal', function (event) {
-    console.log("ffion is here")
-  var button = event.relatedTarget
-    selectedUser = button.getAttribute('data-user-id')
-    console.log(selectedUser)
-     console.log(button)
-  })
+  console.log("ffion is here");
+  var button = event.relatedTarget;
+  selectedUser = button.getAttribute('data-bs-user-id');
+  console.log(selectedUser);
+  console.log(button);
+});
