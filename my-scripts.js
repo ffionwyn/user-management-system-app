@@ -75,7 +75,7 @@ async function seeAllUsers() {
 
 document.addEventListener("DOMContentLoaded", function() {
   const searchInput = document.getElementById("search-input");
-   const searchButton = document.getElementById("search-button");
+  const searchButton = document.getElementById("search-button");
   const createUserButton = document.getElementById("modal-create-user-button");
   const updateButton = document.getElementById("update-button");
 
