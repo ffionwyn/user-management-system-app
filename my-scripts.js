@@ -6,75 +6,77 @@ async function seeAllUsers() {
       'Authorization': `Basic ${btoa('testuser:testpass')}`
     }
   })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            let peopleIDS = Object.keys(data);
-            let content = document.getElementById("main-content");
-            
-            content.innerHTML = "";
-            
-                peopleIDS.map(id => {
-                let person = document.createElement("div");
-                person.classList.add("mb-3");
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      let peopleIDS = Object.keys(data);
+      let content = document.getElementById("main-content");
 
-                let firstName = document.createElement("h5");
-                firstName.classList.add("fs-6");
-                firstName.innerHTML = "First Name: " + data[id].FirstName;
+      content.innerHTML = "";
 
-                let secondName = document.createElement("h5");
-                secondName.classList.add("fs-6");
-                secondName.innerHTML = "Second Name: " + data[id].SecondName;
+      peopleIDS.map(id => {
+        let person = document.createElement("div");
+        person.classList.add("mb-3");
 
-                let dob = document.createElement("h5");
-                dob.classList.add("fs-6");
-                dob.innerHTML = "DOB: " + data[id].DOB;
-                  
-                let email = document.createElement("h5");
-                email.classList.add("fs-6");
-                email.innerHTML = "Email: " + data[id].Email;
+        let firstName = document.createElement("h5");
+        firstName.classList.add("fs-6");
+        firstName.innerHTML = "First Name: " + data[id].FirstName;
 
-                  let deleteUserButton = document.createElement("button");
-                  deleteUserButton.setAttribute("id", "delete-user-button") 
-                  deleteUserButton.setAttribute("data-bs-toggle", "modal") 
-                  deleteUserButton.setAttribute ("data-bs-target", "#deleteUserModal")
-                  deleteUserButton.setAttribute("class", "btn btn-outline-dark btn-sm mb-2") 
-                  deleteUserButton.setAttribute("data-bs-user-id", id)
-                  deleteUserButton.innerHTML = "Delete User"
+        let secondName = document.createElement("h5");
+        secondName.classList.add("fs-6");
+        secondName.innerHTML = "Second Name: " + data[id].SecondName;
 
-                  let updateUserButton = document.createElement("button");
-                  updateUserButton.setAttribute("id", "update-user-button") 
-                  updateUserButton.setAttribute("data-bs-toggle", "modal") 
-                  updateUserButton.setAttribute ("data-bs-target", "#updateUser")
-                  updateUserButton.setAttribute("class", "btn btn-outline-dark btn-sm mb-2") 
-                  updateUserButton.setAttribute("data-bs-user-id", id)
-                  updateUserButton.innerHTML = "Update User"
+        let dob = document.createElement("h5");
+        dob.classList.add("fs-6");
+        dob.innerHTML = "DOB: " + data[id].DOB;
 
-                  let uploadUserFileButton = document.createElement("button");
-                  uploadUserFileButton.setAttribute("id", "upload-file-user-button") 
-                  uploadUserFileButton.setAttribute("data-bs-toggle", "modal") 
-                  uploadUserFileButton.setAttribute ("data-bs-target", "#uploadUserFile")
-                  uploadUserFileButton.setAttribute("class", "btn btn-outline-dark btn-sm mb-2") 
-                  uploadUserFileButton.setAttribute("data-bs-user-id", id)
-                  uploadUserFileButton.innerHTML = "Upload User Contract"
+        let email = document.createElement("h5");
+        email.classList.add("fs-6");
+        email.innerHTML = "Email: " + data[id].Email;
 
-                    
-                person.appendChild(firstName);
-                person.appendChild(secondName);
-                person.appendChild(dob);
-                person.appendChild(email);
-                
-                content.appendChild(deleteUserButton)
-                content.appendChild(updateUserButton)
-                content.appendChild(uploadUserFileButton)
-                content.appendChild(person);
-            });
-        });
+        let buttonsContainer = document.createElement("div"); // Create a container for the buttons
+
+        let deleteUserButton = document.createElement("button");
+        deleteUserButton.setAttribute("id", "delete-user-button");
+        deleteUserButton.setAttribute("data-bs-toggle", "modal");
+        deleteUserButton.setAttribute("data-bs-target", "#deleteUserModal");
+        deleteUserButton.setAttribute("class", "btn btn-outline-dark btn-sm mb-2");
+        deleteUserButton.setAttribute("data-bs-user-id", id);
+        deleteUserButton.innerHTML = "Delete User";
+
+        let updateUserButton = document.createElement("button");
+        updateUserButton.setAttribute("id", "update-user-button");
+        updateUserButton.setAttribute("data-bs-toggle", "modal");
+        updateUserButton.setAttribute("data-bs-target", "#updateUser");
+        updateUserButton.setAttribute("class", "btn btn-outline-dark btn-sm mb-2");
+        updateUserButton.setAttribute("data-bs-user-id", id);
+        updateUserButton.innerHTML = "Update User";
+
+        let uploadUserFileButton = document.createElement("button");
+        uploadUserFileButton.setAttribute("id", "upload-file-user-button");
+        uploadUserFileButton.setAttribute("data-bs-toggle", "modal");
+        uploadUserFileButton.setAttribute("data-bs-target", "#uploadUserFile");
+        uploadUserFileButton.setAttribute("class", "btn btn-outline-dark btn-sm mb-2");
+        uploadUserFileButton.setAttribute("data-bs-user-id", id);
+        uploadUserFileButton.innerHTML = "Upload User Contract";
+
+        buttonsContainer.appendChild(deleteUserButton);
+        buttonsContainer.appendChild(updateUserButton);
+        buttonsContainer.appendChild(uploadUserFileButton);
+
+        person.appendChild(firstName);
+        person.appendChild(secondName);
+        person.appendChild(dob);
+        person.appendChild(email);
+
+        person.appendChild(buttonsContainer);
+        content.appendChild(person);
+      });
+    });
 }
 
-
 document.addEventListener("DOMContentLoaded", function() {
-  const searchInput = document.getElementById("search-input");
+   const searchInput = document.getElementById("search-input");
   const searchButton = document.getElementById("search-button");
   const createUserButton = document.getElementById("modal-create-user-button");
   const updateButton = document.getElementById("update-button");
@@ -82,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
   searchButton.addEventListener("click", handleSearch);
   createUserButton.addEventListener("click", handleCreateUser);
   updateButton.addEventListener("click", handleUpdateUser);
+
   
   
 function handleSearch() {
@@ -127,13 +130,13 @@ function handleSearch() {
       dob.innerHTML = "DOB: " + person.DOB;
 
       let email = document.createElement("h5");
-      dob.classList.add("fs-6");
-      dob.innerHTML = "Email: " + person.email;
+      email.classList.add("fs-6");
+      email.innerHTML = "Email: " + person.Email;
 
       personContainer.appendChild(firstName);
       personContainer.appendChild(secondName);
       personContainer.appendChild(dob);
-      person.Container.appendChild(email);
+      personContainer.appendChild(email);
 
       content.appendChild(personContainer);
     });
@@ -173,7 +176,6 @@ function createNewUser(data) {
       console.error("Error creating user:", error);
     });
 }
-
   
 function handleUpdateUser() {
   const firstNameInput = document.getElementById("user-name-input");
@@ -274,5 +276,3 @@ uploadUserFileModal.addEventListener('show.bs.modal', function (event) {
   var button = event.relatedTarget;
   selectedUser = button.getAttribute('data-bs-user-id');
 });
-
-
