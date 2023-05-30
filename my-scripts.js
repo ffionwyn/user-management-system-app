@@ -28,8 +28,12 @@ async function seeAllUsers() {
 
                 let dob = document.createElement("h5");
                 dob.classList.add("fs-6");
-                  dob.innerHTML = "DOB: " + data[id].DOB;
+                dob.innerHTML = "DOB: " + data[id].DOB;
                   
+                let email = document.createElement("h5");
+                email.classList.add("fs-6");
+                email.innerHTML = "Email: " + data[id].Email;
+
                   let deleteUserButton = document.createElement("button");
                   deleteUserButton.setAttribute("id", "delete-user-button") 
                   deleteUserButton.setAttribute("data-bs-toggle", "modal") 
@@ -58,10 +62,11 @@ async function seeAllUsers() {
                 person.appendChild(firstName);
                 person.appendChild(secondName);
                 person.appendChild(dob);
+                person.appendChild(email);
                 
-                  content.appendChild(deleteUserButton)
-                  content.appendChild(updateUserButton)
-                  content.appendChild(uploadUserFileButton)
+                content.appendChild(deleteUserButton)
+                content.appendChild(updateUserButton)
+                content.appendChild(uploadUserFileButton)
                 content.appendChild(person);
             });
         });
@@ -121,9 +126,14 @@ function handleSearch() {
       dob.classList.add("fs-6");
       dob.innerHTML = "DOB: " + person.DOB;
 
+      let email = document.createElement("h5");
+      dob.classList.add("fs-6");
+      dob.innerHTML = "Email: " + person.email;
+
       personContainer.appendChild(firstName);
       personContainer.appendChild(secondName);
       personContainer.appendChild(dob);
+      person.Container.appendChild(email);
 
       content.appendChild(personContainer);
     });
@@ -134,11 +144,13 @@ function handleSearch() {
   const firstNameInput = document.getElementById("new-first-name");
   const secondNameInput = document.getElementById("new-second-name");
   const dobInput = document.getElementById("new-dob");
+  const emailInput = document.getElementById("new-email");
 
    const userData = {
     FirstName: firstNameInput.value,
     SecondName: secondNameInput.value,
-    DOB: dobInput.value
+    DOB: dobInput.value,
+    Email: emailInput.value,
   };
 
     createNewUser(userData);
@@ -167,12 +179,13 @@ function handleUpdateUser() {
   const firstNameInput = document.getElementById("user-name-input");
   const secondNameInput = document.getElementById("second-name-input"); 
   const dobInput = document.getElementById("dob-input");
+  const emailInput = document.getElementById("user-email-input");
 
   const userData = {
     FirstName: firstNameInput.value,
     SecondName: secondNameInput.value,
     DOB: dobInput.value,
-
+    Email: emailInput.value,
   };
   const userId = firstNameInput
   handleUpdateButtonClick(userData);
